@@ -1,0 +1,44 @@
+.hero-home {
+  position: relative;
+  min-height: 90vh;
+
+  @include m768 {
+    min-height: 100vh;
+  }
+
+  img {
+    @include fullAbs();
+    @include fit;
+  }
+}
+
+.hero__marquee {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  transform: translateY(47%);
+  white-space: nowrap;
+  color: $white;
+  font-family: $flame;
+  font-size: 15vw;
+  line-height: 1;
+
+  @include m576 {
+    font-size: 10vw;
+  }
+  @include m1800 {
+    font-size: 8vw;
+  }
+  @include m2200 {
+    font-size: 150px;
+  }
+
+  p {
+    margin: 0;
+    margin-right: 0.2em;
+    animation: marquee 15s infinite linear;
+  }
+}
+

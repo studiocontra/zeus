@@ -1,0 +1,31 @@
+.wrap-content {
+  display: flex;
+  position: relative;
+
+  .left,
+  .right {
+    position: relative;
+    flex: 0 0 50%;
+  }
+
+  .left {
+    padding-bottom: 60%;
+
+    img {
+      @include fullAbs();
+      @include fit;
+    }
+  }
+
+  .right {
+    padding: 65px;
+    color: $lilac;
+    background-color: $red;
+    display: flex;
+
+    .content__content {
+      max-width: 450px;
+      margin-top: auto;
+    }
+  }
+}

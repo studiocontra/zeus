@@ -1,0 +1,22 @@
+.loader {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 85px;
+    fill: $white;
+    animation: spin 1s cubic-bezier(.98,.02,.59,.71) infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}

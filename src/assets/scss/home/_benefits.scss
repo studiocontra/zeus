@@ -1,0 +1,91 @@
+.wrap-benefits {
+  padding: 130px 0;
+  background-color: $blue;
+}
+
+.benefits__intro {
+  max-width: 900px;
+  color: $green;
+
+  p {
+    margin: 0;
+    letter-spacing: -0.015em;
+    font-size: 38px;
+    line-height: 1.2;
+
+    @include m768 {
+      font-size: 50px;
+    }
+    @include m992 {
+      font-size: 68px;
+    }
+  }
+}
+
+.single-benefit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 80px 0;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  align-items: center;
+
+  .container {
+    position: relative;
+  }
+}
+
+.single-benefit--relative {
+  position: relative;
+}
+
+.single-benefit--left {
+  .benefit__text {
+    @include m768 {
+      right: auto;
+      left: 24px;
+    }
+  }
+}
+
+.benefit__image {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: center;
+
+  @include m768 {
+    width: 35%;
+  }
+  @include m992 {
+    width: 40%;
+  }
+
+  .img {
+    display: inline-block;
+    overflow: hidden;
+    width: 85%;
+    margin: 0 auto;
+    border-radius: 17px;
+  }
+}
+
+.benefit__text {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: center;
+
+  @include m768 {
+    position: absolute;
+    right: 24px;
+    bottom: 0;
+    width: 30%;
+    margin: 0;
+    text-align: left;
+  }
+}

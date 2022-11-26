@@ -1,0 +1,20 @@
+.wrap-values {
+  position: relative;
+  padding: 80px 0;
+  background-color: $green;
+}
+
+
+.wrap-values__shape {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 45px;
+  transform: translateY(-50%);
+  animation: squeeze 10s alternate infinite linear;
+  background-image: url('/img/shape-green.png');
+  background-repeat: repeat-x;
+  background-size: auto 45px;
+}

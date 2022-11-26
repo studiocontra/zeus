@@ -1,0 +1,142 @@
+.wrap-products {
+  position: relative;
+  padding: 100px 0;
+  background-color: $beige;
+}
+
+.wrap-products__shape {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 45px;
+  transform: translateY(-50%);
+  animation: squeeze 10s alternate infinite linear;
+  background-image: url('/img/shape-beige.png');
+  background-repeat: repeat-x;
+  background-size: auto 45px;
+}
+
+.wrap-slider {
+  margin-bottom: 100px;
+
+  @include m768 {
+    margin-bottom: 0;
+  }
+
+  :deep(.swiper) {
+    overflow: visible;
+    padding-top: 30px;
+  }
+}
+
+.single-slide {
+  padding-bottom: 10%;
+
+  .mobile {
+    display: block;
+
+    @include m768 {
+      display: none;
+    }
+  }
+
+  img {
+    display: block;
+    margin-bottom: 25px;
+    transform: translateY(10%);
+    user-select: none;
+
+    @include m768 {
+      display: inline-block;
+      width: 60%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.slide__content {
+  display: block;
+
+  @include m768 {
+    display: inline-block;
+    width: 35%;
+  }
+
+  .title {
+    display: none;
+
+    @include m768 {
+      display: block;
+    }
+  }
+
+  .slide__sizes {
+    display: flex;
+    padding: 20px 0;
+    gap: 10px;
+
+    .size {
+      padding: 15px;
+      border: 1px solid;
+      border-radius: 100%;
+    }
+  }
+}
+
+.wrap-arrows {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  @include m768 {
+    top: 0;
+    bottom: auto;
+    display: block;
+  }
+
+  .container {
+    position: relative;
+  }
+}
+
+.swiper-arrow {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+
+  svg {
+    width: 30px;
+    stroke-width: 2;
+    stroke: $green;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.swiper-arrow--prev {
+  left: 0;
+
+  @include m768 {
+    right: 60px;
+    left: auto;
+  }
+}
+
+.swiper-arrow--next {
+  left: 60px;
+
+  @include m768 {
+    right: 0;
+    left: auto;
+  }
+}
+
+.swiper-arrow--disabled {
+  cursor: auto;
+  opacity: 0.2;
+}
+

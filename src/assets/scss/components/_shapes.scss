@@ -1,0 +1,36 @@
+// Background Shapes
+.shapes {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  :deep(.shape) {
+    position: absolute;
+    border-radius: 50%;
+    background-color: $red;
+    filter: blur(75px);
+    aspect-ratio: 1 / 1;
+
+    @include m768 {
+      filter: blur(100px);
+    }
+  }
+}
+
+.shapes--safari,
+.shapes--iphone {
+  :deep(.shape) {
+    filter: blur(0);
+    background-color: transparent;
+    @include gradient($red);
+
+    @include m768 {
+      filter: blur(0);
+    }
+  }
+}

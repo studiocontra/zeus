@@ -1,0 +1,112 @@
+
+// This snippet uses the same breakpoints as Bootstrap.
+$cols: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+$medias:
+  'sm' 576px,
+  'md' 768px,
+  'lg' 992px,
+  'xl' 1200px,
+  'xx' 1440px,
+  'xt' 2200px;
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+
+  &.no-gutters {
+    margin: 0;
+
+    >[class^="col-"] {
+      padding: 0;
+    }
+  }
+
+  &.justify-between {
+    justify-content: space-between;
+  }
+
+  &.justify-left {
+    justify-content: flex-start;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-right {
+    justify-content: flex-end;
+  }
+
+  &.align-top {
+    align-items: flex-start;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-bottom {
+    align-items: flex-end;
+  }
+
+  &.align-stretch {
+    align-items: stretch;
+  }
+
+  @each $media, $size in $medias {
+    &.#{$media}-reverse {
+      @include media(#{$size}) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
+
+[class^="col-"] {
+  padding: 0 12px;
+  width: 100%;
+
+  @each $media, $size in $medias {
+    &.#{$media}-right {
+      @include media(#{$size}) {
+        text-align: right;
+      }
+    }
+
+    &.#{$media}-center {
+      @include media(#{$size}) {
+        text-align: center;
+      }
+    }
+
+    &.#{$media}-left {
+      @include media(#{$size}) {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.col-auto {
+  padding: 0 12px;
+  flex: 1 1;
+}
+
+
+@each $col in $cols {
+  .col-#{$col} {
+    // width: percentage((1 / (12 / $col)));
+    width: percentage(math.div(1, math.div(12, $col)));
+  }
+}
+
+@each $media, $size in $medias {
+  @each $col in $cols {
+    .col-#{$media}-#{$col} {
+      @include media(#{$size}) {
+        width: percentage(math.div(1, math.div(12, $col)));
+      }
+    }
+  }
+}
