@@ -1,0 +1,58 @@
+.wrap-feed {
+  background-color: $red;
+}
+
+.feed__marquee {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  padding: 100px 0;
+  white-space: nowrap;
+  color: $beige;
+  font-size: 9vw;
+  line-height: 1;
+
+  @include m576 {
+    font-size: 6vw;
+  }
+  @include m1800 {
+    font-size: 5.5vw;
+  }
+  @include m2200 {
+    font-size: 80px;
+  }
+
+  a {
+    margin: 0;
+    margin-right: 0.2em;
+    animation: marquee 15s infinite linear;
+  }
+}
+
+
+.wrap-posts {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.single-post {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    .play {
+      opacity: 0;
+    }
+  }
+
+  .play {
+    transition: opacity 0.2s ease-in;
+    background-color: rgba(black, 0.3);
+
+    @include fullAbs;
+    svg {
+      @include centerAbs;
+    }
+  }
+}

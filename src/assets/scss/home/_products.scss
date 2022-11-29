@@ -9,7 +9,7 @@
   z-index: 2;
   top: 0;
   left: 0;
-  width: 150%;
+  width: 100%;
   height: 45px;
   transform: translateY(-50%);
   animation: squeeze 10s alternate infinite linear;
@@ -20,6 +20,7 @@
 
 .wrap-slider {
   margin-bottom: 100px;
+  overflow: hidden;
 
   @include m768 {
     margin-bottom: 0;

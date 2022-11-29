@@ -4,7 +4,7 @@
 
     <div class="hero__marquee">
       <p v-for="(item, idx) in 10" :key="idx">
-        un mejor mundo, un mejor yogur
+        un mejor mundo, un mejor yogurt
       </p>
     </div>
   </div>

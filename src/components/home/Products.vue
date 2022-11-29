@@ -6,8 +6,10 @@
       <p>
         Conoce nuestros productos:
       </p>
+    </div>
 
-      <div class="wrap-slider">
+    <div class="wrap-slider">
+      <div class="container">
         <h4 class="title">
           Yogures<br>
           Bebibles
@@ -105,8 +107,10 @@
           </div>
         </Swiper>
       </div>
+    </div>
 
-      <div class="wrap-slider">
+    <div class="wrap-slider">
+      <div class="container">
         <h4 class="title">
           Yogures<br>
           Griegos

@@ -3,7 +3,7 @@
   min-height: 90vh;
 
   @include m768 {
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   img {
@@ -39,6 +39,7 @@
     margin: 0;
     margin-right: 0.2em;
     animation: marquee 15s infinite linear;
+    line-height: 1.2;
   }
 }
 

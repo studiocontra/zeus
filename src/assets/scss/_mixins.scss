@@ -158,9 +158,9 @@ $flame: 'flamebold', sans-serif;
 
 @keyframes squeeze {
   0% {
-    transform: translate(-10%, -50%);
+    background-position: 0 0;
   }
   100% {
-    transform: translate(0%, -50%);
+    background-position: 30px 0;
   }
 }

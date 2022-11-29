@@ -1,11 +1,16 @@
 .wrap-content {
   display: flex;
   position: relative;
+  flex-wrap: wrap;
 
   .left,
   .right {
     position: relative;
-    flex: 0 0 50%;
+    flex: 1 1 100%;
+
+    @include m768 {
+      flex: 0 0 50%;
+    }
   }
 
   .left {
@@ -18,14 +23,22 @@
   }
 
   .right {
-    padding: 65px;
+    padding: 20px 16px 40px;
     color: $lilac;
     background-color: $red;
     display: flex;
 
+    @include m768 {
+      padding: 65px;
+    }
+
     .content__content {
       max-width: 450px;
       margin-top: auto;
+
+      .tile {
+        margin-top: 0;
+      }
     }
   }
 }

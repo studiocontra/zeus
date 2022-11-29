@@ -1,13 +1,19 @@
 header {
   position: fixed;
-  width: calc(100% - 32px);
   z-index: 5;
-  padding: 18px 32px;
-  background-color: $green;
   left: 50%;
-  transform: translateX(-50%);
+  width: calc(100% - 32px);
   max-width: 1200px;
+  max-height: 68px;
+  padding: 18px 32px;
+  transform: translateX(-50%);
   border-radius: 0 0 20px 20px;
+  background-color: $green;
+
+  &.active {
+    max-height: calc(var(--vh) * 100);
+    transition: max-height 0.6s cubic-bezier(.25,.1,.25,1);
+  }
 
   .container {
     position: relative;
@@ -15,106 +21,74 @@ header {
 }
 
 .header__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+
+  @include m768 {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &.active {
+    visibility: visible;
+    padding-top: 60px;
+    transition-timing-function: cubic-bezier(.25,.1,.25,1);
+    transition-duration: 0.6s;
+    transition-property: opacity, visibility;
+    opacity: 1;
+  }
 
   .menu-item {
+    display: block;
+    padding: 15px;
     color: $beige;
+    font-size: 24px;
+    font-weight: 500;
+
+    &:not(:last-child) {
+      border-bottom: 2px solid $beige;
+    }
+
+    @include m768 {
+      padding: 0;
+      border: 0 !important;
+      font-size: 16px;
+    }
   }
 }
 
 .header__logo {
   position: relative;
   z-index: 2;
+  display: none;
   width: 118px;
 
+  @include m768 {
+    display: block;
+  }
+
   svg {
-    fill: $beige;
     width: 110px;
+    fill: $beige;
   }
 }
 
-.header__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
+.header__mobile {
   display: flex;
-  flex-direction: column;
   width: 100%;
-  height: 100%;
-  padding: 160px 16px 32px;
-  transition: transform 0.6s cubic-bezier(.25,.1,.25,1);
-  transform: translateX(100%);
-  pointer-events: none;
-  color: $white;
-  background-color: $green;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
 
-  @include m576 {
-    position: relative;
-    flex-direction: row;
-    width: auto;
-    height: auto;
-    padding: 0;
-    padding: 32px 16px;
-    transform: translateX(0);
-    pointer-events: all;
-    opacity: 1;
-    background: none;
-    justify-content: space-between;
+  .header__logo {
+    display: block;
   }
 
-  &.active {
-    transform: translateX(0);
-    pointer-events: all;
-  }
-
-  a {
-    margin-bottom: 16px;
-    font-size: 48px;
-
-    @include m576 {
-      margin-bottom: 0;
-      margin-left: 24px;
-      font-size: 24px;
-    }
-  }
-
-  .menu__contact {
-    margin-top: auto;
-    margin-bottom: 48px;
-
-    @include m768 {
-      display: none;
-    }
-
-    h6 {
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      opacity: 0.5;
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    a {
-      font-size: 18px;
-    }
-  }
-
-  .menu__social {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    @include m768 {
-      display: none;
-    }
-
-    a {
-      margin-bottom: 0;
-      font-size: 14px;
-    }
+  @include m768 {
+    display: none;
   }
 }
 
@@ -123,13 +97,15 @@ header {
   z-index: 2;
   display: block;
   float: right;
-  width: 20px;
-  height: 8px;
+  width: 35px;
+  height: 22px;
+  cursor: pointer;
 
-  @include m576 {
+  @include m768 {
     display: none;
   }
 
+  div,
   &:before,
   &:after {
     position: absolute;
@@ -139,20 +115,29 @@ header {
     content: '';
     transition: transform 0.3s cubic-bezier(.25,.1,.25,1);
     transform-origin: center;
+    border-radius: 2px;
     background-color: $white;
+  }
+
+  div {
+    top: 50%;
+    transition: opacity 0.3s cubic-bezier(.25,.1,.25,1);
+    transform: translateY(-50%);
   }
 
   &:before {
     top: 0;
-    transform: translateX(-30%);
   }
 
   &:after {
     bottom: 0;
-    transform: translateX(30%);
   }
 
   &.active {
+    div {
+      opacity: 0;
+    }
+
     &:before {
       top: 50%;
       transform: translate(0, -50%) rotate(45deg);
@@ -161,49 +146,6 @@ header {
     &:after {
       bottom: 50%;
       transform: translate(0, 50%) rotate(-45deg);
-    }
-  }
-}
-
-.header--dark {
-  .header__logo {
-    svg {
-      fill: $blue;
-    }
-  }
-
-  .header__menu {
-    color: $blue;
-  }
-
-  .header__hamburger {
-    &:before,
-    &:after {
-      background-color: $blue;
-    }
-  }
-}
-
-.header--fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  .header__logo {
-    svg {
-      fill: $white;
-    }
-  }
-
-  .header__menu {
-    color: $white;
-  }
-
-  .header__hamburger {
-    &:before,
-    &:after {
-      background-color: $white;
     }
   }
 }

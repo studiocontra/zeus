@@ -1,5 +1,5 @@
 .wrap-benefits {
-  padding: 130px 0;
+  padding: 160px 0 120px;
   background-color: $blue;
 }
 
@@ -64,12 +64,25 @@
     width: 40%;
   }
 
+  .shape {
+    width: 140%;
+    height: 140%;
+    z-index: 0;
+
+    @include centerAbs;
+  }
+
+  .shape--front {
+    z-index: 2;
+  }
+
   .img {
     display: inline-block;
     overflow: hidden;
     width: 85%;
     margin: 0 auto;
     border-radius: 17px;
+    position: relative;
   }
 }
 
@@ -79,6 +92,7 @@
   max-width: 350px;
   margin: 0 auto;
   text-align: center;
+  color: $green;
 
   @include m768 {
     position: absolute;

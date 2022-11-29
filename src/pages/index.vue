@@ -4,13 +4,17 @@
       <Title>Zeus</Title>
     </Head>
 
-    <Header
-      isHome />
+    <Header />
+
     <HomeHero />
     <HomeBenefits />
     <HomeContent />
     <HomeProducts />
     <HomeValues />
+    <HomePartners />
+    <HomeFeed />
+
+    <Footer />
   </div>
 </template>
 
