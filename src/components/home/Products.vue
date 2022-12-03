@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap-products">
+  <div class="wrap-products" data-section="products">
     <div class="wrap-products__shape"></div>
 
     <div class="container">

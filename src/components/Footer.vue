@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" data-section="footer">
     <div class="container">
       <div class="footer__logo">
         <svg viewBox="0 0 113 30" fill="none" xmlns="http://www.w3.org/2000/svg">

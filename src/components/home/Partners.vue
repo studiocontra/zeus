@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap-partners">
+  <div class="wrap-partners" data-section="delivery">
     <div class="container">
       <div class="partners__box">
         <div class="partners__headline">

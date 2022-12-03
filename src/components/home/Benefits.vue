@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap-benefits">
+  <div class="wrap-benefits" data-section="benefits">
     <div class="benefits__intro">
       <div class="container">
         <p>
@@ -198,23 +198,34 @@ const enterShapes = (parent) => {
 
 export default {
   name: 'HomeBenefits',
-  data() {
-    return {
-      benefitsTl: null,
-    }
-  },
   mounted() {
     let allBenefits = gsap.utils.toArray('.single-benefit');
+    let mm = gsap.matchMedia();
+    let itemsTl;
 
-    const itemsTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.js-benefit-items',
-        start: 'top top',
-        end: () => `+=${allBenefits.length * 100}%`,
-        scrub: 1,
-        pin: true,
-        pinSpacing: true,
-      }
+    mm.add('(min-width: 768px)', () => {
+      itemsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.js-benefit-items',
+          start: 'top top',
+          end: () => `+=${allBenefits.length * 100}%`,
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+        }
+      });
+    });
+    mm.add('(max-width: 767px)', () => {
+      itemsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.js-benefit-items',
+          start: 'top top',
+          end: () => `+=${allBenefits.length * 85}%`,
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+        }
+      });
     });
 
     allBenefits.map((item, idx) => {
@@ -235,9 +246,6 @@ export default {
 
       itemsTl.add(singleItemTl);
     });
-  },
-  beforeDestroy() {
-    this.benefitsTl.kill();
   }
 }
 </script>

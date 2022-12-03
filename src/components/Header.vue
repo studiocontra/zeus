@@ -20,10 +20,16 @@
     <div
       class="header__content"
       :class="{'active': isMenuOpen}">
-      <a href="" class="menu-item">
+      <a
+        href="#"
+        class="menu-item"
+        @click.prevent="scrollToSection('benefits')">
         Beneficios
       </a>
-      <a href="" class="menu-item">
+      <a
+        href="#"
+        class="menu-item"
+        @click.prevent="scrollToSection('products')">
         Productos
       </a>
 
@@ -33,10 +39,16 @@
         </svg>
       </div>
 
-      <a href="" class="menu-item">
+      <a
+        href="#"
+        class="menu-item"
+        @click.prevent="scrollToSection('delivery')">
         Delivery
       </a>
-      <a href="" class="menu-item">
+      <a
+        href="#"
+        class="menu-item"
+        @click.prevent="scrollToSection('footer')">
         Newsletter
       </a>
     </div>
@@ -74,9 +86,21 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     },
     checkMenu() {
-      if (window.innerWidth >= 576) {
+      if (window.innerWidth >= 768) {
         this.isMenuOpen = false;
       }
+    },
+    scrollToSection(target) {
+      const scrollTarget = document.querySelector(`[data-section="${target}"]`).offsetTop;
+
+      if (window.innerWidth < 768) {
+        this.isMenuOpen = false;
+      }
+
+      window.scroll({
+        top: scrollTarget,
+        behavior: 'smooth'
+      })
     }
   }
 }
