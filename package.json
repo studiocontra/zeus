@@ -11,9 +11,12 @@
     "nuxt": "3.0.0",
     "sass": "^1.54.6",
     "sass-loader": "10",
+    "video.js": "^7.20.3",
+    "videojs-youtube": "^2.6.1",
     "vue-gtag-next": "^1.14.0"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "axios": "^0.27.2",
     "gsap": "^3.11.3",
     "swiper": "^8.4.5"

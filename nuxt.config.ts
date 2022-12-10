@@ -19,7 +19,9 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    API_BASE_URL: process.env.API_BASE_URL
+    public: {
+      API_BASE_URL: 'http://zeus.local/wp-json/wp/v2'
+    }
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

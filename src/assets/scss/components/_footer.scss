@@ -14,9 +14,13 @@
 
 .footer__content {
   display: flex;
-  margin-bottom: 80px;
+  margin-bottom: 32px;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @include m768 {
+    margin-bottom: 80px;
+  }
 
   .line {
     display: none;
@@ -57,8 +61,12 @@
     text-transform: uppercase;
     color: $orange;
     font-family: $flame;
-    font-size: 40px;
+    font-size: 32px;
     line-height: 1.2;
+
+    @include m768 {
+      font-size: 40px;
+    }
   }
 
 

@@ -1,29 +1,42 @@
 <template>
   <div class="wrap-content">
     <div class="left">
-      <img class="img" src="/img/zeus-yogurt.jpg" alt="">
+      <picture v-if="img">
+        <source :srcset="img.sizes['half-page']" media="(min-width: 1200px)">
+        <source :srcset="img.sizes['card']" media="(min-width: 768px)">
+        <source :srcset="img.sizes.small">
+        <img class="img" :src="img.url" :alt="img.alt">
+      </picture>
     </div>
     <div class="right">
-      <div class="content__content">
+      <div class="content__content" data-aos="fade-up">
         <h4 class="title">
-          Este mundo sabe mejor
+          {{ headline }}
         </h4>
 
-        <div class="text text--big">
-          <p>
-            En Zeus entendemos los retos que afronta el mundo y respondemos activamente con innovaciones, tecnologias y
-            productos que hacen de este mundo un lugar mejor.
-          </p>
-        </div>
+        <div class="text text--big" v-html="content"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-
+export default {
+  props: {
+    img: {
+      type: [Object, Boolean],
+      default: false,
+    },
+    headline: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

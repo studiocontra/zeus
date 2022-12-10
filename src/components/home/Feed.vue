@@ -4,7 +4,8 @@
       <a
         v-for="(item, idx) in 10"
         :key="idx"
-        href="#">
+        href="https://www.tiktok.com/@zeusecuador"
+        target="_blank">
         Zeus en TikTok /
       </a>
     </div>

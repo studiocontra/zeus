@@ -14,7 +14,15 @@
   }
 
   .left {
-    padding-bottom: 60%;
+    padding-bottom: 140%;
+
+    @include m768 {
+      padding-bottom: 55%;
+    }
+
+    @include m1800 {
+      padding-bottom: 45%;
+    }
 
     img {
       @include fullAbs();
@@ -23,7 +31,7 @@
   }
 
   .right {
-    padding: 20px 16px 40px;
+    padding: 20px 16px 50px;
     color: $lilac;
     background-color: $red;
     display: flex;
@@ -35,6 +43,11 @@
     .content__content {
       max-width: 450px;
       margin-top: auto;
+      text-align: center;
+
+      @include m768 {
+        text-align: left;
+      }
 
       .tile {
         margin-top: 0;

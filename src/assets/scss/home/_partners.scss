@@ -48,25 +48,16 @@
     flex: 0 0 180px;
 
     img {
-      width: 70%;
+      width: 125px;
       margin-bottom: 40px;
     }
 
     .btn {
-      display: block;
-      text-align: center;
-      border: 2px solid $green;
-      color: $green;
-      padding: 5px 20px;
-      border-radius: 30px;
-      font-weight: 700;
-      transition-property: color, background;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-in;
+      margin-bottom: 16px;
 
-      &:hover {
-        color: $white;
-        background-color: $green;;
+      img {
+        margin-bottom: 0;
+        width: 100%;
       }
     }
   }

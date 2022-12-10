@@ -24,13 +24,13 @@
             <span>
               Siguenos
             </span>
-            <a href="https://www.awwwards.com/contrastudio/" target="_blank">
+            <a href="https://www.tiktok.com/@zeusecuado" target="_blank">
               TikTok
             </a>
-            <a href="https://www.instagram.com/contra_studio_/" target="_blank">
+            <a href="https://instagram.com/yogurzeus" target="_blank">
               Instagram
             </a>
-            <a href="https://www.linkedin.com/company/contra-studio" target="_blank">
+            <a href="https://www.facebook.com/YogurZeus/" target="_blank">
               Facebook
             </a>
           </div>
@@ -43,13 +43,19 @@
         </span>
 
         <div class="footer__menu">
-          <a href="https://www.instagram.com/contra_studio_/" target="_blank">
+          <a
+            href="#"
+            @click.prevent="scrollToSection('benefits')">
             Beneficios
           </a>
-          <a href="https://www.awwwards.com/contrastudio/" target="_blank">
+          <a
+            href="#"
+            @click.prevent="scrollToSection('products')">
             Productos
           </a>
-          <a href="https://www.linkedin.com/company/contra-studio" target="_blank">
+          <a
+            href="#"
+            @click.prevent="scrollToSection('delivery')">
             Delivery Partners
           </a>
         </div>
@@ -75,6 +81,20 @@ export default {
   computed: {
     currentYear() {
       return new Date().getFullYear();
+    }
+  },
+  methods: {
+    scrollToSection(target) {
+      const scrollTarget = document.querySelector(`[data-section="${target}"]`).offsetTop;
+
+      if (window.innerWidth < 768) {
+        this.isMenuOpen = false;
+      }
+
+      window.scroll({
+        top: scrollTarget,
+        behavior: 'smooth'
+      })
     }
   }
 }
