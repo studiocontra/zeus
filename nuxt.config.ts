@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      API_BASE_URL: 'http://zeus.local/wp-json/wp/v2'
+      API_BASE_URL: 'https://dev.studiocontra.co/zeus/wp-json/wp/v2'
     }
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
