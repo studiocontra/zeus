@@ -11,8 +11,11 @@
     </div>
 
     <div class="wrap-posts container">
-      <div class="single-post">
-        <img src="/img/vaca.jpg" alt="">
+      <div
+        v-for="(post, idx) in data"
+        :key="idx"
+        class="single-post">
+        <blockquote class="tiktok-embed" :cite="post.url" data-video-id="7174812212647841030"> <section></section> </blockquote>
 
         <div class="play">
           <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,9 +28,14 @@
 </template>
 
 <script>
-  export default {
-
+export default {
+  props: {
+    data: {
+      type: [Array, Boolean],
+      default: false,
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

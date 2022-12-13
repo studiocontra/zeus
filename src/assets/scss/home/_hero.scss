@@ -9,15 +9,16 @@
 }
 
 .hero__player {
+  overflow: hidden;
   @include fullAbs();
 
   .unmute {
     z-index: 2;
+    display: flex;
     cursor: pointer;
     transition: opacity 0.3s ease-in;
     opacity: 0;
     background-color: rgba($green, 0.5);
-    display: flex;
 
     @include fullAbs();
 
@@ -35,6 +36,22 @@
     }
   }
 
+  .wrap-video {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    min-width: 100%;
+    max-width: none;
+    min-height: 100%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    aspect-ratio: 16/9;
+
+    @media (max-aspect-ratio: 1/1) {
+      aspect-ratio: 1/1.6;
+    }
+  }
+
   .video {
     display: none;
 
@@ -42,13 +59,13 @@
     @include fit;
   }
 
-  @media (min-aspect-ratio: 4/3) {
+  @media (min-aspect-ratio: 1/1) {
     .video--desktop {
       display: block;
     }
   }
 
-  @media (max-aspect-ratio: 4/3) {
+  @media (max-aspect-ratio: 1/1) {
     .video--mobile {
       display: block;
     }

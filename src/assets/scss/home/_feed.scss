@@ -39,11 +39,17 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
+  width: 350px;
+  height: 600px;
 
   &:hover {
     .play {
       opacity: 0;
     }
+  }
+
+  blockquote {
+    @include fullAbs;
   }
 
   .play {

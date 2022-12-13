@@ -32,7 +32,8 @@
     <HomePartners
       :headline="data.delivery_partners.headline"
       :items="data.delivery_partners.items" />
-    <HomeFeed />
+    <HomeFeed
+      :data="data.tiktok.posts" />
 
     <Footer />
   </div>

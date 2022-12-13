@@ -16,6 +16,12 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ],
+      script: [
+        {
+          async: true,
+          src: 'https://www.tiktok.com/embed.js',
+        }
+      ]
     },
   },
   runtimeConfig: {

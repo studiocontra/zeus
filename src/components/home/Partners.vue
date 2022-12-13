@@ -13,7 +13,7 @@
             v-for="(partner, idx) in items"
             :key="idx"
             class="single-partner">
-            <img :src="partner.logo.sizes.small" :alt="partner.logo.alt">
+            <img :src="partner.logo.sizes.small || partner.logo.url" :alt="partner.logo.alt">
 
             <a
               class="btn"
