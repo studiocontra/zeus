@@ -15,13 +15,19 @@
         v-for="(post, idx) in data"
         :key="idx"
         class="single-post">
-        <blockquote class="tiktok-embed" :cite="post.url" data-video-id="7174812212647841030"> <section></section> </blockquote>
-
-        <div class="play">
+        <div class="wrap-post">
+          <iframe
+            :src="`https://www.tiktok.com/embed/${videoId(post.url)}`"
+            frameborder="0"
+            allowfullscreen
+            scrolling="no"
+            allow="encrypted-media; autoplay;"></iframe>
+        </div>
+        <!-- <div class="play">
           <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M30.5 15.4312C32.5 16.5859 32.5 19.4727 30.5 20.6274L5 35.3498C3 36.5045 0.499998 35.0611 0.499998 32.7517L0.5 3.30686C0.5 0.997463 3 -0.445914 5 0.708787L30.5 15.4312Z" fill="white"/>
           </svg>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -33,6 +39,14 @@ export default {
     data: {
       type: [Array, Boolean],
       default: false,
+    }
+  },
+  computed: {
+    videoId() {
+      return url => {
+        const parts = url.split('/');
+        return parts[parts.length - 1];
+      }
     }
   }
 }
