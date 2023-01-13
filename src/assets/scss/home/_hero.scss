@@ -2,6 +2,22 @@
   position: relative;
   min-height: calc(var(--vh, 1vh) * 90);
 
+  @media (min-aspect-ratio: 1/1) {
+    padding-bottom: 56.25%;
+
+    .video--desktop {
+      display: block;
+    }
+  }
+
+  @media (max-aspect-ratio: 1/1) {
+    padding-bottom: 125%;
+
+    .video--mobile {
+      display: block;
+    }
+  }
+
   img {
     @include fullAbs();
     @include fit;
@@ -18,7 +34,7 @@
     cursor: pointer;
     transition: opacity 0.3s ease-in;
     opacity: 0;
-    background-color: rgba($green, 0.5);
+    background-color: rgba(black, 0.5);
 
     @include fullAbs();
 
@@ -27,7 +43,7 @@
       margin: auto;
 
       path {
-        stroke: $beige;
+        fill: $beige;
       }
     }
 

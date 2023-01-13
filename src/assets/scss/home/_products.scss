@@ -21,6 +21,14 @@
 .wrap-products__headline {
   margin-bottom: 14px;
   color: $green;
+
+  p {
+    font-size: 16px;
+
+    @include m768 {
+      font-size: 20px;
+    }
+  }
 }
 
 .wrap-slider {
@@ -51,12 +59,19 @@
   }
 
   :deep(.swiper-wrapper) {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 }
 
 .single-slide {
   padding-bottom: 10%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @include m768 {
+    flex-direction: row;
+  }
 
   .mobile {
     display: block;
@@ -70,12 +85,11 @@
   img {
     display: block;
     margin-bottom: 25px;
-    transform: translateY(10%);
     user-select: none;
 
     @include m768 {
       display: inline-block;
-      width: 60%;
+      width: 55%;
       margin-bottom: 0;
     }
   }
@@ -86,7 +100,8 @@
 
   @include m768 {
     display: inline-block;
-    width: 35%;
+    width: 40%;
+    padding-top: 30%;
   }
 
   .title {
@@ -94,6 +109,7 @@
 
     @include m768 {
       display: block;
+      margin-top: auto;
     }
   }
 

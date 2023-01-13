@@ -28,7 +28,6 @@
 }
 
 .single-benefit {
-  position: relative;
   position: absolute;
   top: 0;
   left: 0;
@@ -40,10 +39,18 @@
   align-items: center;
 
   @include m768 {
+    padding: 80px 10%;
   }
 
   .container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include m768 {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
 
@@ -52,6 +59,12 @@
 }
 
 .single-benefit--left {
+  .container {
+    @include m768 {
+      flex-direction: row-reverse;
+    }
+  }
+
   .benefit__text {
     @include m768 {
       right: auto;
@@ -82,10 +95,6 @@
     @include centerAbs;
   }
 
-  :deep(.shape--front) {
-    z-index: 2;
-  }
-
   .img {
     position: relative;
     display: inline-block;
@@ -107,11 +116,7 @@
   color: $green;
 
   @include m768 {
-    position: absolute;
-    right: 24px;
-    bottom: 40px;
     width: 30%;
-    margin: 0;
     text-align: left;
   }
 }

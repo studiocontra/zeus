@@ -29,51 +29,150 @@
   }
 }
 
-
 .wrap-posts {
   position: relative;
-  padding-bottom: 80px;
+  display: none;
+  max-width: 1400px;
+  padding-bottom: 150px;
+
+  @include m992 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 120px 50px;
+  }
 }
 
 .single-post {
   position: relative;
   display: inline-block;
-  overflow: hidden;
-  width: 320px;
-  border-radius: 10px;
-  cursor: pointer;
+  overflow: visible;
+  margin: 0 auto;
 
   &:hover {
+    svg {
+      opacity: 1;
+    }
+
     .play {
       opacity: 0;
     }
   }
 
+  svg {
+    width: 160%;
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+    @include centerAbs();
+  }
+
   .wrap-post {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    padding-bottom: 179%;
+    width: 320px;
+    cursor: pointer;
+    transform: scale(0.9);
+    border-radius: 10px;
+
+    @include m992 {
+      transform: scale(1);
+    }
   }
 
-  blockquote,
   iframe {
+    position: absolute;
+    top: -1px;
+    left: 0;
     display: block;
     overflow: hidden;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: -1px;
-    left: 0;
   }
+}
 
-  .play {
-    transition: opacity 0.2s ease-in;
-    background-color: rgba(black, 0.3);
 
-    @include fullAbs;
-    svg {
-      @include centerAbs;
+// "Random" positions for desktop
+@include m992 {
+  .single-post {
+    transition-delay: 0.2s;
+
+    &[data-aos='fade-center'].aos-animate {
+      opacity: 1;
+    }
+
+    &:nth-child(5n + 2) {
+      transform: translate(-25%, 25%) scale(0.75);
+
+      &.aos-animate {
+        transform: translate(-25%, 25%) scale(1);
+      }
+    }
+    &:nth-child(5n + 3) {
+      transform: translateY(-10%) scale(0.75);
+
+      &.aos-animate {
+        transform: translateY(-10%) scale(1);
+      }
+    }
+    &:nth-child(5n + 4) {
+      transform: translateY(10%) scale(0.75);
+
+      &.aos-animate {
+        transform: translateY(10%) scale(1);
+      }
+    }
+    &:nth-child(5n + 5) {
+      margin-right: 25%;
+      transform: translate(50%, -15%) scale(0.75);
+
+      &.aos-animate {
+        transform: translate(50%, -15%) scale(1);
+      }
     }
   }
 }
+
+.feed-slider {
+  padding-top: 40px 0;
+
+  @include m992 {
+    display: none;
+  }
+}
+
+.wrap-arrows {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+}
+
+.swiper-feed {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+
+  svg {
+    width: 30px;
+    stroke-width: 2;
+    stroke: $beige;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.swiper-feed--prev {
+  right: 76px;
+}
+
+.swiper-feed--next {
+  right: 16px;
+}
+
+.swiper-feed--disabled {
+  cursor: auto;
+  opacity: 0.2;
+}
+

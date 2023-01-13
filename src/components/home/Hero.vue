@@ -12,8 +12,10 @@
       <div class="unmute" @click="toggleMute">
         <svg
           v-if="isMuted"
-          viewBox="0 0 16 16"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.75 5.75v4.5h2.5l4 3V2.75l-4 3zm9 .5s1 .5 1 1.75s-1 1.75-1 1.75m1-6.5c2 1 3 2.5 3 4.75s-1 3.75-3 4.75"/></svg>
-          <svg v-if="!isMuted" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.75 5.75v4.5h2.5l4 3V2.75l-4 3zm12.5 0l-3.5 4.5m0-4.5l3.5 4.5"/></svg>
+          viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.08 9H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h.08a2 2 0 0 1 1.519.698l3.642 4.25c.604.704 1.759.277 1.759-.651V4.703c0-.928-1.155-1.355-1.76-.65L6.6 8.301A2 2 0 0 1 5.08 9zm13.556-4.725a1 1 0 1 0-1.377 1.45c3.655 3.472 3.655 9.078 0 12.55a1 1 0 1 0 1.377 1.45c4.485-4.26 4.485-11.19 0-15.45zm-2.947 2.8a1 1 0 1 0-1.378 1.45c2.027 1.925 2.027 5.025 0 6.95a1 1 0 1 0 1.378 1.45c2.857-2.714 2.857-7.136 0-9.85z" fill="currentColor"/></svg>
+        <svg
+          v-if="!isMuted"
+          viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 4.703c0-1.857-2.31-2.711-3.519-1.301L5.84 7.65a1 1 0 0 1-.76.35H5a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h.08a1 1 0 0 1 .76.35l.712-.612l-.713.611l3.642 4.25c1.209 1.41 3.519.555 3.519-1.302V4.703zm3.293 4.59a1 1 0 0 1 1.414 0L19 10.586l1.293-1.293a1 1 0 1 1 1.414 1.414L20.414 12l1.293 1.293a1 1 0 0 1-1.414 1.414L19 13.414l-1.293 1.293a1 1 0 0 1-1.414-1.414L17.586 12l-1.293-1.293a1 1 0 0 1 0-1.414z" fill="currentColor"/></svg>
       </div>
       <div class="wrap-video">
         <video
@@ -71,7 +73,7 @@ export default {
     return {
       desktopPlayer: null,
       mobilePlayer: null,
-      isMuted: true,
+      isMuted: false,
       playerOptions: {
         autoplay: true,
         controls: false,
@@ -104,6 +106,10 @@ export default {
         }
       ]
     });
+
+
+    this.desktopPlayer.play();
+    this.mobilePlayer.play();
   },
   beforeDestroy() {
     if (this.desktopPlayer) {

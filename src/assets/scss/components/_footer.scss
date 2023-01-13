@@ -59,7 +59,7 @@
     display: block;
     margin-bottom: 60px;
     text-transform: uppercase;
-    color: $orange;
+    color: $green;
     font-family: $flame;
     font-size: 32px;
     line-height: 1.2;
@@ -84,13 +84,16 @@
       margin-bottom: 16px;
       font-weight: 700;
       flex: 1 1 100%;
+      font-size: 20px;
     }
 
     a {
+      font-size: 16px;
       font-weight: 500;
       flex: 0 1 auto;
 
       @include m768 {
+        font-size: 18px;
         flex: 0 1 33%;
       }
     }
@@ -152,10 +155,12 @@
 
   a {
     color: $green;
+    font-size: 16px;
     font-weight: 500;
     flex: 0 1 auto;
 
     @include m768 {
+      font-size: 18px;
       flex: 0 1 33%;
     }
   }

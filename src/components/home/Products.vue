@@ -27,10 +27,19 @@
           :slides-per-view="1.5"
           :space-between="50"
           :navigation="{
-                    nextEl: '.swiper-arrow--next',
-                    prevEl: '.swiper-arrow--prev',
-                    disabledClass: 'swiper-arrow--disabled',
-                }"
+              nextEl: '.swiper-arrow--next',
+              prevEl: '.swiper-arrow--prev',
+              disabledClass: 'swiper-arrow--disabled',
+          }"
+          :breakpoints="{
+            // when window width is >= 640px
+            '768': {
+              slidesPerView: 1.25
+            },
+            '1200': {
+              slidesPerView: 1.75
+            }
+          }"
           :modules="modules">
           <SwiperSlide
             v-for="prodId in category.items"

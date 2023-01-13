@@ -1,6 +1,6 @@
 <template>
   <header
-    class="header"
+    class="header container"
     :class="{'active': isMenuOpen}">
     <div class="header__mobile">
       <div
