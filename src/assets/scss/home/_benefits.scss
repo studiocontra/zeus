@@ -35,11 +35,11 @@
   width: 100%;
   height: auto;
   height: calc(var(--vh, 1vh) * 100);
-  padding: 80px 0;
+  padding: 150px 0 80px;
   align-items: center;
 
   @include m768 {
-    padding: 80px 10%;
+    padding: 150px 10% 80px;
   }
 
   .container {

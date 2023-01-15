@@ -64,10 +64,10 @@
 }
 
 .single-slide {
-  padding-bottom: 10%;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  padding-bottom: 10%;
+  align-items: flex-start;
 
   @include m768 {
     flex-direction: row;
@@ -82,16 +82,28 @@
     }
   }
 
-  img {
+  .slide__img {
+    position: relative;
     display: block;
     margin-bottom: 25px;
+    padding-bottom: 120%;
     user-select: none;
 
     @include m768 {
       display: inline-block;
       width: 55%;
+      padding-bottom: 58%;
       margin-bottom: 0;
     }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    @include fit(contain, center bottom);
+
   }
 }
 
@@ -136,8 +148,8 @@
 .wrap-arrows {
   position: absolute;
   z-index: 2;
-  left: 0;
   top: -40px;
+  left: 0;
   display: block;
   width: 100%;
 

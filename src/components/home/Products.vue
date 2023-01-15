@@ -53,7 +53,9 @@
               {{getProductData(prodId).title.rendered}}
             </h5>
 
-            <img :src="getProductDataImg(prodId, 'full')" alt="">
+            <div class="slide__img">
+              <img :src="getProductDataImg(prodId, 'full')" alt="">
+            </div>
 
             <div class="slide__content">
               <h5 class="title title--small">
