@@ -9,7 +9,44 @@
 
       <div class="footer__content">
         <div class="footer__newsletter">
+          <p class="newsletter__intro text text--big">
+            Suscríbete si también quieres hacer un mundo mejor.
+          </p>
+          <!-- Begin Mailchimp Signup Form -->
+          <div id="mc_embed_signup">
+            <form
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              class="validate"
+              target="_self"
+              @submit.prevent="formSubmit($event)">
+              <div id="mc_embed_signup_scroll" class="input-wrap">
+                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" v-model="email">
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_aab539b420dd8c11f75cfd7d9_ecde9a38a3" tabindex="-1" value=""></div>
 
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+              </div>
+            </form>
+            <p
+              class="error" v-if="showValidation">
+              El email es incorrecto
+            </p>
+            <p
+              class="error" v-if="showExists">
+              El email ya existe
+            </p>
+            <p
+              class="error" v-if="showError">
+              Ha ocurrido un error
+            </p>
+            <p
+              class="success" v-if="showSuccess">
+              Gracias por suscribirte
+            </p>
+          </div>
+          <!--End mc_embed_signup-->
         </div>
 
         <div class="line"></div>
@@ -78,9 +115,13 @@ export default {
       default: 'light'
     }
   },
-  computed: {
-    currentYear() {
-      return new Date().getFullYear();
+  data() {
+    return {
+      email: '',
+      showSuccess: false,
+      showExists: false,
+      showError: false,
+      showValidation: false,
     }
   },
   methods: {
@@ -95,6 +136,54 @@ export default {
         top: scrollTarget,
         behavior: 'smooth'
       })
+    },
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
+    async formSubmit(e) {
+      const isValid = this.validateEmail(this.email);
+      const captcha = document.querySelector('[name="b_aab539b420dd8c11f75cfd7d9_ecde9a38a3"]').value;
+
+      if (isValid && (captcha === '')) {
+        const submitRes = await $fetch('https://gmail.us14.list-manage.com/subscribe/post-json?u=98a751dde782b9c7a30bbeb69&amp;id=542bdfc3b1&amp;f_id=00c485e0f0&c=?', {
+          method: 'POST',
+          body: {
+            'EMAIL': this.email
+          }
+        });
+
+        if (submitRes.status == 'subscribed') {
+          this.showSuccess = true;
+          setTimeout(() => {
+            this.showSuccess = false;
+          }, 4000);
+        } else if (submitRes.status == 400) {
+          this.showExists = true;
+          setTimeout(() => {
+            this.showExists = false;
+          }, 4000);
+        } else {
+          this.showError = true;
+          setTimeout(() => {
+            this.showError = false;
+          }, 4000);
+
+        }
+
+        console.log(submitRes);
+
+      } else {
+        this.showValidation = true;
+        setTimeout(() => {
+          this.showValidation = false;
+        }, 4000);
+      }
+    }
+  },
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
     }
   }
 }

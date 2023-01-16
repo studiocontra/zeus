@@ -35,12 +35,87 @@
 
 .footer__newsletter {
   flex: 1 1 100%;
+  margin-bottom: 64px;
 
   @include m992 {
     flex: 0 0 50%;
+    margin-bottom: 0;
   }
   @include m1200 {
     flex: 0 0 55%;
+  }
+
+  .newsletter__intro {
+    color: $red;
+    font-size: 28px;
+    line-height: 1;
+
+    @include m768 {
+      font-size: 32px;
+    }
+    @include m992 {
+      font-size: 44px;
+    }
+  }
+
+  form {
+    width: 100%;
+    max-width: 650px;
+
+    .input-wrap {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .email {
+      height: 47px;
+      padding: 5px 20px;
+      color: $red;
+      border: 2px solid $red;
+      border-radius: 30px;
+      background-color: transparent;
+      font-size: 17px;
+      flex: 1 1 auto;
+
+      @include Mont(400);
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    .button {
+      height: 47px;
+      text-align: center;
+      color: $beige;
+      border: 2px solid $red;
+      border-radius: 30px;
+      background-color: $red;
+      font-size: 17px;
+      flex: 0 0 150px;
+      cursor: pointer;
+      transition-property: opacity, background-color;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in;
+
+      @include Mont(500);
+
+      &:hover {
+        background-color: $beige;
+        color: $red;
+      }
+
+    }
+  }
+
+  .error {
+    color: $red;
+  }
+
+  .success {
+    color: $green;
   }
 }
 
@@ -82,9 +157,9 @@
 
     span {
       margin-bottom: 16px;
+      font-size: 20px;
       font-weight: 700;
       flex: 1 1 100%;
-      font-size: 20px;
     }
 
     a {

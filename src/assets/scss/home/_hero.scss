@@ -1,6 +1,5 @@
 .hero-home {
   position: relative;
-  min-height: calc(var(--vh, 1vh) * 90);
 
   @media (min-aspect-ratio: 1/1) {
     padding-bottom: 56.25%;
@@ -11,7 +10,7 @@
   }
 
   @media (max-aspect-ratio: 1/1) {
-    padding-bottom: 125%;
+    padding-bottom: 165%;
 
     .video--mobile {
       display: block;

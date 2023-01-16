@@ -6,7 +6,7 @@
   display: flex;
   overflow: hidden;
   width: 100%;
-  padding: 100px 0;
+  padding: 100px 0 0;
   white-space: nowrap;
   color: $beige;
   font-size: 9vw;
@@ -31,15 +31,50 @@
 
 .wrap-posts {
   position: relative;
-  display: none;
   max-width: 1400px;
-  padding-bottom: 150px;
+  padding: 50px 16px;
 
   @include m992 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 120px 50px;
+    padding: 150px 16px;
+  }
+
+  .wrap-grid {
+    display: none;
+
+    @include m992 {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 120px 50px;
+    }
+  }
+}
+
+.feed__cta {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  left: 16px;
+  display: inline-block;
+
+  @include m992 {
+    left: 33%;
+  }
+  @include m1200 {
+    top: 20%;
+  }
+
+  span {
+    display: block;
+    max-width: 220px;
+    color: $beige;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  svg {
+    width: 220px;
   }
 }
 
@@ -100,28 +135,36 @@
       opacity: 1;
     }
 
-    &:nth-child(5n + 2) {
-      transform: translate(-25%, 25%) scale(0.75);
+    &:nth-of-type(5n + 2) {
+      transform: translate(-15%, 25%) scale(0.75);
 
       &.aos-animate {
-        transform: translate(-25%, 25%) scale(1);
+        transform: translate(-15%, 25%) scale(1);
+      }
+
+      @include m1200 {
+        transform: translate(-25%, 25%) scale(0.75);
+
+        &.aos-animate {
+          transform: translate(-25%, 25%) scale(1);
+        }
       }
     }
-    &:nth-child(5n + 3) {
+    &:nth-of-type(5n + 3) {
       transform: translateY(-10%) scale(0.75);
 
       &.aos-animate {
         transform: translateY(-10%) scale(1);
       }
     }
-    &:nth-child(5n + 4) {
+    &:nth-of-type(5n + 4) {
       transform: translateY(10%) scale(0.75);
 
       &.aos-animate {
         transform: translateY(10%) scale(1);
       }
     }
-    &:nth-child(5n + 5) {
+    &:nth-of-type(5n + 5) {
       margin-right: 25%;
       transform: translate(50%, -15%) scale(0.75);
 
@@ -133,7 +176,7 @@
 }
 
 .feed-slider {
-  padding-top: 40px 0;
+  padding: 40px 0;
 
   @include m992 {
     display: none;
