@@ -16,6 +16,7 @@
     "vue-gtag-next": "^1.14.0"
   },
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
     "gsap": "^3.11.3",

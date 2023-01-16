@@ -78,6 +78,15 @@
   }
 }
 
+.feed__cta--top {
+  @include m992 {
+    left: 40%;
+  }
+  @include m1200 {
+    top: 7%;
+  }
+}
+
 .single-post {
   position: relative;
   display: inline-block;

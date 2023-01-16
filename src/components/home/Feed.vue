@@ -28,7 +28,9 @@
     </div> -->
 
     <div class="wrap-posts container">
-      <a class="feed__cta ">
+      <a
+        class="feed__cta"
+        :class="{'feed__cta--top': data.length < 3}">
         <span>
           Síguenos y encuentra más contenido
         </span>
@@ -39,7 +41,6 @@
       </a>
 
       <div class="wrap-grid">
-
         <div
           v-for="(post, idx) in data"
           :key="idx"
@@ -72,39 +73,6 @@
               :src="post.video_file.url"
               class="video video-js"
               :data-ref="`desktop-player-${idx}`"></video>
-          </div>
-        </div>
-
-        <div
-          class="single-post"
-          data-aos="fade-center">
-          <svg
-            viewBox="0 0 518 683"
-            fill="none">
-            <path d="M297.73 630.581C246.327 595.26 182.961 584.794 136.392 539.771C68.4242 483.782 35.3323 447.82 9.42989 353.525C-6.89364 308.331 2.31409 245.353 15.3874 199.841C38.9139 117.997 102.85 70.0985 166.794 38.1738C233.664 5.00237 319.543 -21.5135 383.943 28.1106C447.085 76.8481 476.691 156.883 500.173 240.486C525.026 329.056 519.609 422.884 505.057 514.237C493.939 583.792 479.282 634.028 426.224 669.825C374.423 704.63 341.884 660.997 297.73 630.581Z" fill="#DFD4C7"/>
-          </svg>
-
-          <div class="wrap-post">
-            <video
-              src="https://dev.studiocontra.co/zeus/wp-content/uploads/2023/01/example-video.mp4"
-              class="video video-js"
-              data-ref="desktop-player-1"></video>
-          </div>
-        </div>
-        <div
-          class="single-post"
-          data-aos="fade-center">
-          <svg
-            viewBox="0 0 518 683"
-            fill="none">
-            <path d="M297.73 630.581C246.327 595.26 182.961 584.794 136.392 539.771C68.4242 483.782 35.3323 447.82 9.42989 353.525C-6.89364 308.331 2.31409 245.353 15.3874 199.841C38.9139 117.997 102.85 70.0985 166.794 38.1738C233.664 5.00237 319.543 -21.5135 383.943 28.1106C447.085 76.8481 476.691 156.883 500.173 240.486C525.026 329.056 519.609 422.884 505.057 514.237C493.939 583.792 479.282 634.028 426.224 669.825C374.423 704.63 341.884 660.997 297.73 630.581Z" fill="#DFD4C7"/>
-          </svg>
-
-          <div class="wrap-post">
-            <video
-              src="https://dev.studiocontra.co/zeus/wp-content/uploads/2023/01/example-video.mp4"
-              class="video video-js"
-              data-ref="desktop-player-2"></video>
           </div>
         </div>
       </div>

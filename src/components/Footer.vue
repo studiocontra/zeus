@@ -105,7 +105,10 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import mailchimp from '@mailchimp/mailchimp_marketing';
+
 gsap.registerPlugin(ScrollTrigger);
+
 
 export default {
   name: 'MainFooter',
@@ -123,6 +126,17 @@ export default {
       showError: false,
       showValidation: false,
     }
+  },
+  async setup() {
+  const { public: {MAILCHIMP_KEY} } = useRuntimeConfig();
+
+  mailchimp.setConfig({
+    apiKey: MAILCHIMP_KEY,
+    server: 'us14',
+  });
+
+  const response = await mailchimp.ping.get();
+  console.log(response);
   },
   methods: {
     scrollToSection(target) {
