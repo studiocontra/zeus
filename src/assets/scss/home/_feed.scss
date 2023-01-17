@@ -103,7 +103,7 @@
     }
   }
 
-  svg {
+  >svg {
     width: 160%;
     transition: opacity 0.3s ease-out;
     opacity: 0;
@@ -120,6 +120,32 @@
 
     @include m992 {
       transform: scale(1);
+    }
+
+    &.playing {
+      .play {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    .play {
+      display: flex;
+      visibility: visible;
+      opacity: 1;
+      background-color: rgba(black, 0.5);
+      align-items: center;
+      justify-content: center;
+      @include fullAbs;
+
+      svg {
+        width: 72px;
+        fill: $beige;
+      }
+    }
+
+    :deep(.vjs-big-play-button) {
+      display: none;
     }
   }
 

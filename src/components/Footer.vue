@@ -15,18 +15,20 @@
           <!-- Begin Mailchimp Signup Form -->
           <div id="mc_embed_signup">
             <form
+              action="https://reylacteos.us13.list-manage.com/subscribe/post?u=5d02bd40b12110e49af116b7a&amp;id=c54aeb12bc&amp;f_id=00eee1e2f0"
               method="post"
               id="mc-embedded-subscribe-form"
               name="mc-embedded-subscribe-form"
               class="validate"
-              target="_self"
-              @submit.prevent="formSubmit($event)">
+              target="_blank">
               <div id="mc_embed_signup_scroll" class="input-wrap">
-                <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" v-model="email">
+                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" v-model="email" required>
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_aab539b420dd8c11f75cfd7d9_ecde9a38a3" tabindex="-1" value=""></div>
-
-                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_5d02bd40b12110e49af116b7a_c54aeb12bc" tabindex="-1" value="">
+                </div>
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"
+                @click.prevent="formSubmit">
               </div>
             </form>
             <p
@@ -105,10 +107,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import mailchimp from '@mailchimp/mailchimp_marketing';
-
 gsap.registerPlugin(ScrollTrigger);
-
 
 export default {
   name: 'MainFooter',
@@ -126,17 +125,6 @@ export default {
       showError: false,
       showValidation: false,
     }
-  },
-  async setup() {
-  const { public: {MAILCHIMP_KEY} } = useRuntimeConfig();
-
-  mailchimp.setConfig({
-    apiKey: MAILCHIMP_KEY,
-    server: 'us14',
-  });
-
-  const response = await mailchimp.ping.get();
-  console.log(response);
   },
   methods: {
     scrollToSection(target) {
@@ -157,36 +145,16 @@ export default {
     },
     async formSubmit(e) {
       const isValid = this.validateEmail(this.email);
-      const captcha = document.querySelector('[name="b_aab539b420dd8c11f75cfd7d9_ecde9a38a3"]').value;
+      const captcha = document.querySelector('[name="b_5d02bd40b12110e49af116b7a_c54aeb12bc"]').value;
 
       if (isValid && (captcha === '')) {
-        const submitRes = await $fetch('https://gmail.us14.list-manage.com/subscribe/post-json?u=98a751dde782b9c7a30bbeb69&amp;id=542bdfc3b1&amp;f_id=00c485e0f0&c=?', {
-          method: 'POST',
-          body: {
-            'EMAIL': this.email
-          }
-        });
+        console.log(e.target.parentNode);
+        e.target.parentNode.parentNode.submit();
 
-        if (submitRes.status == 'subscribed') {
-          this.showSuccess = true;
-          setTimeout(() => {
-            this.showSuccess = false;
-          }, 4000);
-        } else if (submitRes.status == 400) {
-          this.showExists = true;
-          setTimeout(() => {
-            this.showExists = false;
-          }, 4000);
-        } else {
-          this.showError = true;
-          setTimeout(() => {
-            this.showError = false;
-          }, 4000);
-
-        }
-
-        console.log(submitRes);
-
+        this.showSuccess = true;
+        setTimeout(() => {
+          this.showSuccess = false;
+        }, 4000);
       } else {
         this.showValidation = true;
         setTimeout(() => {

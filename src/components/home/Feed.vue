@@ -73,6 +73,10 @@
               :src="post.video_file.url"
               class="video video-js"
               :data-ref="`desktop-player-${idx}`"></video>
+
+            <div class="play" @click="playVideo('desktop', idx)">
+              <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+            </div>
           </div>
         </div>
       </div>
@@ -112,6 +116,10 @@
             :src="post.video_file.url"
             class="video video-js"
             :data-ref="`mobile-player-${idx}`"></video>
+
+          <div class="play" @click="playVideo('mobile', idx)">
+            <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+          </div>
         </div>
       </SwiperSlide>
 
@@ -161,6 +169,7 @@ export default {
   data() {
     return {
       modules: [Navigation],
+      allPlayers: null,
       players: null,
       playersMobile: null,
       playerOptions: {
@@ -172,9 +181,8 @@ export default {
     };
   },
   mounted() {
-    this.players = this.data.map((post, idx) => {
-      return {
-        [idx]: videojs(document.querySelector(`video[data-ref="desktop-player-${idx}"]`), {
+    this.players = this.data.map((post, idx) => ({
+        [`desktop-${idx}`]: videojs(document.querySelector(`video[data-ref="desktop-player-${idx}"]`), {
           ...this.playerOptions,
           sources: [
             {
@@ -183,12 +191,10 @@ export default {
             }
           ]
         })
-      }
-    });
+      }));
 
-    this.playersMobile = this.data.map((post, idx) => {
-      return {
-        [idx]: videojs(document.querySelector(`video[data-ref="mobile-player-${idx}"]`), {
+    this.playersMobile = this.data.map((post, idx) => ({
+        [`mobile-${idx}`]: videojs(document.querySelector(`video[data-ref="mobile-player-${idx}"]`), {
           ...this.playerOptions,
           sources: [
             {
@@ -197,13 +203,34 @@ export default {
             }
           ]
         })
-      }
-    });
+      }));
+
+    this.allPlayers = [
+      ...this.players,
+      ...this.playersMobile
+    ];
+
+    this.allPlayers.map(player => {
+      const [playerInstance] = Object.values(player);
+
+      playerInstance.on('pause', () => {
+        console.log(playerInstance.el_.parentElement);
+        playerInstance.el_.parentElement.classList.remove('playing');
+      });
+    })
   },
   methods: {
     randomVal() {
-      // return Math.floor(Math.random() * 3) + 1;
       return Math.floor(Math.random() * 3) + 1;
+    },
+    playVideo(size, id) {
+      const [targetPlayer] = this.allPlayers.filter(item => {
+        const [key] = Object.keys(item);
+        return key === `${size}-${id}`;
+      });
+
+      targetPlayer[`${size}-${id}`].play();
+      document.querySelector(`video[data-ref="${size}-player-${id}"]`).parentElement.parentElement.classList.add('playing');
     }
   },
   computed: {
