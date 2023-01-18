@@ -13,42 +13,68 @@
             Suscríbete si también quieres hacer un mundo mejor.
           </p>
           <!-- Begin Mailchimp Signup Form -->
-          <div id="mc_embed_signup">
-            <form
-              action="https://reylacteos.us13.list-manage.com/subscribe/post?u=5d02bd40b12110e49af116b7a&amp;id=c54aeb12bc&amp;f_id=00eee1e2f0"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              class="validate"
-              target="_blank">
-              <div id="mc_embed_signup_scroll" class="input-wrap">
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" v-model="email" required>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input type="text" name="b_5d02bd40b12110e49af116b7a_c54aeb12bc" tabindex="-1" value="">
-                </div>
-                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"
-                @click.prevent="formSubmit">
+          <form
+            action="https://reylacteos.us13.list-manage.com/subscribe/post?u=5d02bd40b12110e49af116b7a&amp;id=c54aeb12bc&amp;f_id=00eee1e2f0"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank">
+            <div class="input-wrap">
+              <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" v-model="email" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_5d02bd40b12110e49af116b7a_c54aeb12bc" tabindex="-1" value="">
               </div>
-            </form>
-            <p
-              class="error" v-if="showValidation">
-              El email es incorrecto
-            </p>
-            <p
-              class="error" v-if="showExists">
-              El email ya existe
-            </p>
-            <p
-              class="error" v-if="showError">
-              Ha ocurrido un error
-            </p>
-            <p
-              class="success" v-if="showSuccess">
-              Gracias por suscribirte
-            </p>
-          </div>
+              <input type="submit" value="Subscribe" name="subscribe" class="button"
+              @click.prevent="formSubmit">
+            </div>
+          </form>
+          <p
+            class="error" v-if="showValidation">
+            El email es incorrecto
+          </p>
+          <p
+            class="error" v-if="showExists">
+            El email ya existe
+          </p>
+          <p
+            class="error" v-if="showError">
+            Ha ocurrido un error
+          </p>
+          <p
+            class="success" v-if="showSuccess">
+            Gracias por suscribirte
+          </p>
           <!--End mc_embed_signup-->
+        </div>
+
+        <div class="footer__newsletter">
+          <form
+            ref="ajaxForm"
+            action="https://gmail.us14.list-manage.com/subscribe/post-json?u=98a751dde782b9c7a30bbeb69&amp;id=542bdfc3b1&amp;f_id=00c485e0f0&amp;c=?"
+            method="get"
+            name="mc-embedded-subscribe-form"
+            target="_self">
+            <div class="input-wrap">
+              <input type="email" v-model="ajaxEmail" name="EMAIL" class="email">
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input
+                  ref="captcha"
+                  type="text"
+                  name="b_98a751dde782b9c7a30bbeb69_542bdfc3b1"
+                  tabindex="-1"
+                  value="">
+              </div>
+              <input
+                type="submit"
+                value="Subscribe"
+                name="subscribe"
+                class="button"
+                @click.prevent="ajaxFormSubmit">
+            </div>
+          </form>
         </div>
 
         <div class="line"></div>
@@ -120,6 +146,7 @@ export default {
   data() {
     return {
       email: '',
+      ajaxEmail: '',
       showSuccess: false,
       showExists: false,
       showError: false,
@@ -155,6 +182,45 @@ export default {
         setTimeout(() => {
           this.showSuccess = false;
         }, 4000);
+      } else {
+        this.showValidation = true;
+        setTimeout(() => {
+          this.showValidation = false;
+        }, 4000);
+      }
+    },
+    async ajaxFormSubmit({target}) {
+      const isValid = this.validateEmail(this.ajaxEmail);
+      const url = this.$refs.ajaxForm.getAttribute('action');
+      const captcha = this.$refs.captcha.value;
+
+      console.log(encodeURIComponent(this.ajaxEmail));
+
+
+       if (isValid && (captcha === '')) {
+        const {status, data} = await $fetch(url, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          query: { EMAIL: encodeURIComponent(this.ajaxEmail) }
+        });
+        if (data.result == 'success') {
+          this.showSuccess = true;
+          setTimeout(() => {
+            this.showSuccess = false;
+          }, 4000);
+        } else if (data.status == 400) {
+          this.showExists = true;
+          setTimeout(() => {
+            this.showExists = false;
+          }, 4000);
+        } else {
+          this.showError = true;
+          setTimeout(() => {
+            this.showError = false;
+          }, 4000);
+        }
+        console.log(data);
       } else {
         this.showValidation = true;
         setTimeout(() => {
