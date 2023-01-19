@@ -122,9 +122,7 @@ export default {
   },
   data() {
     return {
-      email: '',
       ajaxEmail: '',
-      fetchEmail: '',
       showSuccess: false,
       showExists: false,
       showError: false,

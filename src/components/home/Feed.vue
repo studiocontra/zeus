@@ -98,11 +98,25 @@
 
     <Swiper
       class="feed-slider"
-      :slides-per-view="'auto'"
+      :slides-per-view="1.4"
       :navigation="{
         nextEl: '.swiper-feed--next',
         prevEl: '.swiper-feed--prev',
         disabledClass: 'swiper-feed--disabled',
+      }"
+      :breakpoints="{
+        576: {
+          slidesPerView: 1.7,
+        },
+        650: {
+          slidesPerView: 2,
+        },
+        750: {
+          slidesPerView: 2.3,
+        },
+        890: {
+          slidesPerView: 2.75,
+        },
       }"
       :modules="modules">
       <!-- <SwiperSlide

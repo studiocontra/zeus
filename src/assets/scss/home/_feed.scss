@@ -35,7 +35,7 @@
   padding: 50px 16px;
 
   @include m992 {
-    padding: 150px 16px;
+    padding: 150px 16px 200px;
   }
 
   .wrap-grid {
@@ -62,7 +62,7 @@
     left: 33%;
   }
   @include m1200 {
-    top: 20%;
+    top: 150px;
   }
 
   span {
@@ -92,6 +92,10 @@
   display: inline-block;
   overflow: visible;
   margin: 0 auto;
+
+  &[data-aos='fade-center'] {
+    opacity: 1;
+  }
 
   &:hover {
     svg {
@@ -216,22 +220,30 @@
     transition-delay: 0.2s;
 
     &[data-aos='fade-center'].aos-animate {
-      opacity: 1;
-    }
-
-    &:nth-of-type(5n + 2) {
-      transform: translate(-15%, 25%) scale(0.75);
+      opacity: 0;
 
       &.aos-animate {
-        transform: translate(-15%, 25%) scale(1);
+        opacity: 1;
       }
+    }
 
-      @include m1200 {
-        transform: translate(-25%, 25%) scale(0.75);
+    &:nth-of-type(2n + 2) {
+      transform: translate(-5%, 10%) scale(0.75);
 
-        &.aos-animate {
-          transform: translate(-25%, 25%) scale(1);
-        }
+      &.aos-animate {
+        transform: translate(-5%, 10%) scale(1);
+      }
+    }
+  }
+}
+
+@include m1200 {
+  .single-post {
+    &:nth-of-type(5n + 2) {
+      transform: translate(-25%, 22%) scale(0.75);
+
+      &.aos-animate {
+        transform: translate(-25%, 22%) scale(1);
       }
     }
     &:nth-of-type(5n + 3) {
