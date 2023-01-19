@@ -22,11 +22,13 @@
           v-if="videoDesktop"
           ref="desktopPlayer"
           class="video video-js video--desktop"
+          playsinline
           :src="videoDesktop"></video>
         <video
           v-if="videoMobile"
           ref="mobilePlayer"
           class="video video--mobile"
+          playsinline
           :src="videoMobile"></video>
       </div>
     </div>
