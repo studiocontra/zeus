@@ -12,50 +12,10 @@
           <p class="newsletter__intro text text--big">
             Suscríbete si también quieres hacer un mundo mejor.
           </p>
-          <!-- Begin Mailchimp Signup Form -->
-          <form
-            action="https://reylacteos.us13.list-manage.com/subscribe/post?u=5d02bd40b12110e49af116b7a&amp;id=c54aeb12bc&amp;f_id=00eee1e2f0"
-            method="post"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            class="validate"
-            target="_blank">
-            <div class="input-wrap">
-              <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" v-model="email" required>
-              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="b_5d02bd40b12110e49af116b7a_c54aeb12bc" tabindex="-1" value="">
-              </div>
-              <input type="submit" value="Subscribe" name="subscribe" class="button"
-              @click.prevent="formSubmit">
-            </div>
-          </form>
-          <p
-            class="error" v-if="showValidation">
-            El email es incorrecto
-          </p>
-          <p
-            class="error" v-if="showExists">
-            El email ya existe
-          </p>
-          <p
-            class="error" v-if="showError">
-            Ha ocurrido un error
-          </p>
-          <p
-            class="success" v-if="showSuccess">
-            Gracias por suscribirte
-          </p>
-          <!--End mc_embed_signup-->
-        </div>
 
-        <div class="footer__newsletter">
           <form
-            ref="ajaxForm"
-            action="https://gmail.us14.list-manage.com/subscribe/post-json?u=98a751dde782b9c7a30bbeb69&amp;id=542bdfc3b1&amp;f_id=00c485e0f0&amp;c=?"
-            method="get"
-            name="mc-embedded-subscribe-form"
-            target="_self">
+            class="js-ajax-form"
+            method="get">
             <div class="input-wrap">
               <input type="email" v-model="ajaxEmail" name="EMAIL" class="email">
               <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -75,6 +35,22 @@
                 @click.prevent="ajaxFormSubmit">
             </div>
           </form>
+          <p
+            class="error" v-if="showValidation">
+            El email es incorrecto
+          </p>
+          <p
+            class="error" v-if="showExists">
+            El email ya existe
+          </p>
+          <p
+            class="error" v-if="showError">
+            Ha ocurrido un error
+          </p>
+          <p
+            class="success" v-if="showSuccess">
+            Gracias por suscribirte
+          </p>
         </div>
 
         <div class="line"></div>
@@ -132,6 +108,7 @@
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import $ from 'jquery';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,6 +124,7 @@ export default {
     return {
       email: '',
       ajaxEmail: '',
+      fetchEmail: '',
       showSuccess: false,
       showExists: false,
       showError: false,
@@ -170,18 +148,44 @@ export default {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     },
-    async formSubmit(e) {
-      const isValid = this.validateEmail(this.email);
-      const captcha = document.querySelector('[name="b_5d02bd40b12110e49af116b7a_c54aeb12bc"]').value;
+    async ajaxFormSubmit({target}) {
+      const isValid = this.validateEmail(this.ajaxEmail);
+      const captcha = this.$refs.captcha.value;
+      const vApp = this;
 
       if (isValid && (captcha === '')) {
-        console.log(e.target.parentNode);
-        e.target.parentNode.parentNode.submit();
-
-        this.showSuccess = true;
-        setTimeout(() => {
-          this.showSuccess = false;
-        }, 4000);
+        $.ajax({
+          type: 'GET',
+          url: 'https://reylacteos.us13.list-manage.com/subscribe/post-json?u=5d02bd40b12110e49af116b7a&id=c54aeb12bc&f_id=00eee1e2f0&c=?',
+          data: $('.js-ajax-form').serialize(),
+          cache       : false,
+          dataType    : 'json',
+          contentType: "application/json; charset=utf-8",
+          error(err) {
+            vApp.showError = true;
+            setTimeout(() => {
+              vApp.showError = false;
+            }, 4000);
+          },
+          success(data) {
+            console.log(data);
+            if (data.result != "success") {
+              // Something went wrong, do something to notify the user.
+              vApp.showError = true;
+              setTimeout(() => {
+                vApp.showError = false;
+              }, 4000);
+            } else {
+              // It worked, carry on...
+              vApp.showSuccess = true;
+              $('.js-ajax-form').fadeOut();
+              setTimeout(() => {
+                $('.js-ajax-form').fadeIn();
+                vApp.showSuccess = false;
+              }, 4000);
+            }
+          }
+        });
       } else {
         this.showValidation = true;
         setTimeout(() => {
@@ -189,45 +193,6 @@ export default {
         }, 4000);
       }
     },
-    async ajaxFormSubmit({target}) {
-      const isValid = this.validateEmail(this.ajaxEmail);
-      const url = this.$refs.ajaxForm.getAttribute('action');
-      const captcha = this.$refs.captcha.value;
-
-      console.log(encodeURIComponent(this.ajaxEmail));
-
-
-       if (isValid && (captcha === '')) {
-        const {status, data} = await $fetch(url, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          query: { EMAIL: encodeURIComponent(this.ajaxEmail) }
-        });
-        if (data.result == 'success') {
-          this.showSuccess = true;
-          setTimeout(() => {
-            this.showSuccess = false;
-          }, 4000);
-        } else if (data.status == 400) {
-          this.showExists = true;
-          setTimeout(() => {
-            this.showExists = false;
-          }, 4000);
-        } else {
-          this.showError = true;
-          setTimeout(() => {
-            this.showError = false;
-          }, 4000);
-        }
-        console.log(data);
-      } else {
-        this.showValidation = true;
-        setTimeout(() => {
-          this.showValidation = false;
-        }, 4000);
-      }
-    }
   },
   computed: {
     currentYear() {

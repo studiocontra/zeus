@@ -1,6 +1,8 @@
 export default defineNuxtConfig({
   srcDir: 'src/',
   app: {
+    // baseURL: '/test-zeus',
+    baseURL: '/',
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
       title: 'Zeus',

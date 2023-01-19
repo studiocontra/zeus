@@ -69,13 +69,27 @@
           </svg>
 
           <div class="wrap-post">
-            <video
-              :src="post.video_file.url"
-              class="video video-js"
-              :data-ref="`desktop-player-${idx}`"></video>
+            <div class="wrap-video">
+              <video
+                :src="post.video_file.url"
+                class="video video-js"
+                :data-ref="`desktop-player-${idx}`"></video>
 
-            <div class="play" @click="playVideo('desktop', idx)">
-              <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+              <div class="play" @click="playVideo('desktop', idx)">
+                <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+              </div>
+            </div>
+            <div class="profile-badge">
+              <a target="_blank" href="https://www.tiktok.com/@zeusecuador?referer_url=cdpn.io%2Fcpe%2Fboomboom%2Findex.html%3Fkey%3Dindex.html-4be0ba87-9de6-d219-6dc3-319a8da88333&amp;refer=embed&amp;embed_source=121331973%2C120811592%2C120810756%3Bnull%3Bembed_masking&amp;referer_video_id=7181961905173449989" rel="noreferrer" data-e2e="src-SmartWrapperExtension-a">
+                <div class="profile-badge__img">
+                  <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/5b32edd0310048dae297d53d08b5251f~c5_100x100.jpeg?x-expires=1674262800&amp;x-signature=BFLfs1xWM%2FSOiePA3%2BK6dB%2BeSuY%3D" alt="" data-e2e="Player-Profile-Avatar">
+                </div>
+                <div class="profile-badge__name">
+                  <h5>zeusecuador</h5>
+                  <p>ZeusEcuador</p>
+                </div>
+                <button class="button">Ver perfil</button>
+              </a>
             </div>
           </div>
         </div>
@@ -112,13 +126,27 @@
         class="single-post"
         data-aos="fade-center">
         <div class="wrap-post">
-          <video
-            :src="post.video_file.url"
-            class="video video-js"
-            :data-ref="`mobile-player-${idx}`"></video>
+          <div class="wrap-video">
+            <video
+              :src="post.video_file.url"
+              class="video video-js"
+              :data-ref="`mobile-player-${idx}`"></video>
 
-          <div class="play" @click="playVideo('mobile', idx)">
-            <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+            <div class="play" @click="playVideo('mobile', idx)">
+              <svg viewBox="0 0 24 24"><path d="M9.525 18.025q-.5.325-1.013.037Q8 17.775 8 17.175V6.825q0-.6.512-.888q.513-.287 1.013.038l8.15 5.175q.45.3.45.85t-.45.85Z"/></svg>
+            </div>
+          </div>
+
+          <div class="profile-badge">
+            <a target="_blank" href="https://www.tiktok.com/@zeusecuador?referer_url=cdpn.io%2Fcpe%2Fboomboom%2Findex.html%3Fkey%3Dindex.html-4be0ba87-9de6-d219-6dc3-319a8da88333&amp;refer=embed&amp;embed_source=121331973%2C120811592%2C120810756%3Bnull%3Bembed_masking&amp;referer_video_id=7181961905173449989" rel="noreferrer" data-e2e="src-SmartWrapperExtension-a">
+              <div class="profile-badge__img">
+                <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/5b32edd0310048dae297d53d08b5251f~c5_100x100.jpeg?x-expires=1674262800&amp;x-signature=BFLfs1xWM%2FSOiePA3%2BK6dB%2BeSuY%3D" alt="" data-e2e="Player-Profile-Avatar">
+              </div>
+              <div class="profile-badge__name">
+                <h5>zeusecuador</h5>
+              </div>
+              <button class="button">Ver perfil</button>
+            </a>
           </div>
         </div>
       </SwiperSlide>

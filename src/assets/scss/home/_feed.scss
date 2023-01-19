@@ -122,6 +122,10 @@
       transform: scale(1);
     }
 
+    .wrap-video {
+      position: relative;
+    }
+
     &.playing {
       .play {
         visibility: hidden;
@@ -146,6 +150,51 @@
 
     :deep(.vjs-big-play-button) {
       display: none;
+    }
+  }
+
+  .profile-badge {
+    border-top: 4px solid #fe2c55;
+    background-color: white;
+
+    a {
+      display: flex;
+      padding: 7px 15px;
+      cursor: pointer;
+      align-items: center;
+    }
+
+    .profile-badge__img {
+      overflow: hidden;
+      width: 50px;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+    }
+
+    .profile-badge__name {
+      padding: 0 15px;
+
+      h5, p {
+        margin: 0;
+      }
+
+      h5 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .button {
+      padding: 6px 12px;
+      cursor: pointer;
+      color: white;
+      border: 0;
+      border-radius: 4px;
+      background-color: #fe2c55;
+      @include Mont(700);
     }
   }
 
