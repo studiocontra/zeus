@@ -98,13 +98,16 @@
 
     <Swiper
       class="feed-slider"
-      :slides-per-view="1.4"
+      :slides-per-view="1.1"
       :navigation="{
         nextEl: '.swiper-feed--next',
         prevEl: '.swiper-feed--prev',
         disabledClass: 'swiper-feed--disabled',
       }"
       :breakpoints="{
+        400: {
+          slidesPerView: 1.4,
+        },
         576: {
           slidesPerView: 1.7,
         },

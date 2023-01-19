@@ -32,7 +32,7 @@
 .wrap-posts {
   position: relative;
   max-width: 1400px;
-  padding: 50px 16px;
+  padding: 80px 16px;
 
   @include m992 {
     padding: 150px 16px 200px;
@@ -68,6 +68,8 @@
   span {
     display: block;
     max-width: 220px;
+    position: relative;
+    top: 7px;
     color: $beige;
     font-weight: 500;
     line-height: 1.2;

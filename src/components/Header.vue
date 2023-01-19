@@ -1,7 +1,10 @@
 <template>
   <header
     class="header container"
-    :class="{'active': isMenuOpen}">
+    :class="{
+      'active': isMenuOpen,
+      'fixed': isMenuFixed
+    }">
     <div class="header__mobile">
       <div
         class="header__hamburger"
@@ -75,11 +78,14 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      isMenuFixed: false,
+      lastScroll: 0,
     };
   },
   mounted() {
     this.checkMenu();
     window.addEventListener('resize', this.checkMenu);
+    window.addEventListener('scroll', this.togleOnScroll);
   },
   methods: {
     toggleMenu() {
@@ -101,6 +107,18 @@ export default {
         top: scrollTarget,
         behavior: 'smooth'
       })
+    },
+    togleOnScroll() {
+      let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+
+      if (st > this.lastScroll){
+        // downscroll code
+       this.isMenuFixed = false;
+      } else {
+        // upscroll code
+        this.isMenuFixed = true;
+      }
+      this.lastScroll = st <= 0 ? 0 : st; // For Mobile or negative scrolling
     }
   }
 }
