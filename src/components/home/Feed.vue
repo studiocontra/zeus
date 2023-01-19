@@ -272,7 +272,7 @@ export default {
       });
 
       targetPlayer[`${size}-${id}`].play();
-      document.querySelector(`video[data-ref="${size}-player-${id}"]`).parentElement.parentElement.classList.add('playing');
+      document.querySelector(`video[data-ref="${size}-player-${id}"]`).parentElement.parentElement.parentElement.classList.add('playing');
     }
   },
   computed: {

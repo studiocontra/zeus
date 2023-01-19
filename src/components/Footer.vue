@@ -65,7 +65,7 @@
             <span>
               Siguenos
             </span>
-            <a href="https://www.tiktok.com/@zeusecuado" target="_blank">
+            <a href="https://www.tiktok.com/@zeusecuador" target="_blank">
               TikTok
             </a>
             <a href="https://instagram.com/yogurzeus" target="_blank">
