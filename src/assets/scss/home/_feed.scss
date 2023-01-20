@@ -94,6 +94,7 @@
   display: inline-block;
   overflow: visible;
   margin: 0 auto;
+  width: 320px;
 
   &[data-aos='fade-center'] {
     opacity: 1;
@@ -119,7 +120,7 @@
   .wrap-post {
     position: relative;
     overflow: hidden;
-    width: 320px;
+    width: 100%;
     cursor: pointer;
     transform: scale(0.9);
     border-radius: 10px;

@@ -72,6 +72,7 @@
             <div class="wrap-video">
               <video
                 :src="post.video_file.url"
+                :poster="post.poster.url"
                 class="video video-js"
                 :data-ref="`desktop-player-${idx}`"></video>
 
@@ -98,28 +99,11 @@
 
     <Swiper
       class="feed-slider"
-      :slides-per-view="1.1"
+      :slides-per-view="'auto'"
       :navigation="{
         nextEl: '.swiper-feed--next',
         prevEl: '.swiper-feed--prev',
         disabledClass: 'swiper-feed--disabled',
-      }"
-      :breakpoints="{
-        400: {
-          slidesPerView: 1.4,
-        },
-        576: {
-          slidesPerView: 1.7,
-        },
-        650: {
-          slidesPerView: 2,
-        },
-        750: {
-          slidesPerView: 2.3,
-        },
-        890: {
-          slidesPerView: 2.75,
-        },
       }"
       :modules="modules">
       <!-- <SwiperSlide
@@ -146,6 +130,7 @@
           <div class="wrap-video">
             <video
               :src="post.video_file.url"
+              :poster="post.poster.url"
               class="video video-js"
               :data-ref="`mobile-player-${idx}`"></video>
 
@@ -231,6 +216,7 @@ export default {
           ...this.playerOptions,
           sources: [
             {
+              poster: post.poster.url,
               src: post.video_file.url,
               type: 'video/mp4'
             }
@@ -243,6 +229,7 @@ export default {
           ...this.playerOptions,
           sources: [
             {
+              poster: post.poster.url,
               src: post.video_file.url,
               type: 'video/mp4'
             }
