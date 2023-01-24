@@ -58,7 +58,7 @@
         <div class="footer__social">
           <span class="highlight">
             un mejor mundo,<br>
-            un mejor yogurt.
+            un mejor yogur.
           </span>
 
           <div class="footer__social-menu">
