@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: '' },
-        { name: 'format-detection', content: 'telephone=no' }
+        { name: 'format-detection', content: 'telephone=no' },
       ],
       link: [
         { rel: 'apple-touch-icon', sizes: '57x57', href: '/apple-icon-57x57.png'},
@@ -59,11 +59,24 @@ export default defineNuxtConfig({
   modules: ['nuxt-security'],
   security: {
     headers: {
-      crossOriginResourcePolicy: {
-        value: '*',
+      crossOriginEmbedderPolicy: {
+        value: 'unsafe-none',
+        route: '/**'
+      },
+      contentSecurityPolicy: {
+        value: {
+          'base-uri': ["'self'"],
+          'font-src': ["'self'", 'https:', 'data:'],
+          'img-src': ["'self'", 'https:', 'data:'],
+          'object-src': ["'none'"],
+          'script-src-attr': ["'none'"],
+          'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+          'upgrade-insecure-requests': true,
+        },
         route: '/**'
       },
     },
+    hidePoweredBy: false
   },
   build: {
     transpile: ['gsap'],
