@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: '' },
-        { name: 'format-detection', content: 'telephone=no' }
+        { name: 'format-detection', content: 'telephone=no' },
       ],
       link: [
         { rel: 'apple-touch-icon', sizes: '57x57', href: '/apple-icon-57x57.png'},
@@ -30,12 +30,6 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/pn', sizes: '96x96" href="/favicon-96x96.png'},
         { rel: 'icon', type: 'image/pn', sizes: '16x16" href="/favicon-16x16.png'},
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ],
-      script: [
-        {
-          async: true,
-          src: 'https://www.tiktok.com/embed.js',
-        }
       ]
     },
   },
@@ -61,6 +55,28 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  modules: ['nuxt-security'],
+  security: {
+    headers: {
+      crossOriginEmbedderPolicy: {
+        value: 'unsafe-none',
+        route: '/**'
+      },
+      contentSecurityPolicy: {
+        value: {
+          'base-uri': ["'self'"],
+          'font-src': ["'self'", 'https:', 'data:'],
+          'img-src': ["'self'", 'https:', 'data:'],
+          'object-src': ["'none'"],
+          'script-src-attr': ["'none'"],
+          'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+          'upgrade-insecure-requests': true,
+        },
+        route: '/**'
+      },
+    },
+    hidePoweredBy: false
   },
   build: {
     transpile: ['gsap'],
