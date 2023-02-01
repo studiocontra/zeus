@@ -30,12 +30,6 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/pn', sizes: '96x96" href="/favicon-96x96.png'},
         { rel: 'icon', type: 'image/pn', sizes: '16x16" href="/favicon-16x16.png'},
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ],
-      script: [
-        {
-          async: true,
-          src: 'https://www.tiktok.com/embed.js',
-        }
       ]
     },
   },
@@ -59,6 +53,15 @@ export default defineNuxtConfig({
           additionalData: `@use "sass:math";
           @import "@/assets/scss/_mixins.scss";`,
         },
+      },
+    },
+  },
+  modules: ['nuxt-security'],
+  security: {
+    headers: {
+      crossOriginResourcePolicy: {
+        value: '*',
+        route: '/**'
       },
     },
   },
