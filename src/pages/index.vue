@@ -35,6 +35,8 @@
     <HomeFeed
       :data="data.tiktok.posts" />
 
+    <Modal />
+
     <Footer />
   </div>
 </template>

@@ -29,7 +29,7 @@
               </div>
               <input
                 type="submit"
-                value="Subscribe"
+                value="Enviar"
                 name="subscribe"
                 class="button"
                 @click.prevent="ajaxFormSubmit">
@@ -163,7 +163,7 @@ export default {
             vApp.showError = true;
             setTimeout(() => {
               vApp.showError = false;
-            }, 4000);
+            }, 3000);
           },
           success(data) {
             console.log(data);
@@ -172,7 +172,7 @@ export default {
               vApp.showError = true;
               setTimeout(() => {
                 vApp.showError = false;
-              }, 4000);
+              }, 3000);
             } else {
               // It worked, carry on...
               vApp.showSuccess = true;
@@ -180,7 +180,7 @@ export default {
               setTimeout(() => {
                 $('.js-ajax-form').fadeIn();
                 vApp.showSuccess = false;
-              }, 4000);
+              }, 3000);
             }
           }
         });
@@ -188,7 +188,7 @@ export default {
         this.showValidation = true;
         setTimeout(() => {
           this.showValidation = false;
-        }, 4000);
+        }, 3000);
       }
     },
   },
