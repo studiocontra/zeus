@@ -56,7 +56,7 @@ export default {
   },
   async created() {
     const { public: {API_BASE_URL} } = useRuntimeConfig();
-    const {acf} = await $fetch(`${API_BASE_URL}/pages/2?acf_format=standard`);
+    const {acf} = await $fetch('/data/data.json');
 
     this.data = acf;
     this.isLoaded = true;
