@@ -45,23 +45,19 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import localData from '@/assets/js/data';
+
 export default {
   name: 'HomePage',
   data() {
     return {
       isLoaded: false,
-      data: null,
+      data: localData,
       productsData: null,
     };
   },
-  async created() {
-    const {acf} = await $fetch('/data/data.json');
-
-    this.data = acf;
-    this.isLoaded = true;
-
-  },
   mounted() {
+    this.isLoaded = true;
     AOS.init();
 
     const vh = window.innerHeight * 0.01;
