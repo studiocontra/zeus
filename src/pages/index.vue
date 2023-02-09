@@ -49,19 +49,34 @@ import localData from '@/assets/js/data';
 
 export default {
   name: 'HomePage',
+  head: {
+    bodyAttrs: {
+      class: 'fixed',
+    }
+  },
   data() {
     return {
       isLoaded: false,
       data: localData,
       productsData: null,
+      isModalVisible: true,
     };
   },
   mounted() {
+    const vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('overflow', 'hidden');
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     this.isLoaded = true;
     AOS.init();
-
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
+  watch: {
+    isModalVisible(newVal, oldVal) {
+      if(!newVal) {
+        document.documentElement.style.setProperty('overflow', 'initial');
+      }
+    }
   }
 }
 </script>
