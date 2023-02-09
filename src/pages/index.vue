@@ -55,7 +55,6 @@ export default {
     };
   },
   async created() {
-    const { public: {API_BASE_URL} } = useRuntimeConfig();
     const {acf} = await $fetch('/data/data.json');
 
     this.data = acf;
