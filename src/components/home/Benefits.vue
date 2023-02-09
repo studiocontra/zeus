@@ -18,11 +18,7 @@
         <div class="container">
           <div class="benefit__image">
             <div v-html="benefit.shapes"></div>
-            <picture>
-              <source :srcset="benefit.image.sizes.card" media="(min-width: 768px)">
-              <source :srcset="benefit.image.sizes.small">
-              <img class="img" :src="benefit.image.url" :alt="benefit.image.alt">
-            </picture>
+            <img class="img" :src="benefit.image.url" :alt="benefit.image.alt">
           </div>
 
           <div class="benefit__text">

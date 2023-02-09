@@ -22,7 +22,6 @@
         </div>
 
         <Swiper
-          v-if="productsData"
           data-aos="fade-right"
           :slides-per-view="1.5"
           :space-between="50"
@@ -42,31 +41,30 @@
           }"
           :modules="modules">
           <SwiperSlide
-            v-for="prodId in category.items"
-            :key="prodId"
+            v-for="(prod, idx) in category.items"
+            :key="idx"
             class="single-slide"
             :style="{
-              'color': getProductData(prodId).acf.color
+              'color': prod.acf.color
             }">
-
             <h5 class="title title--small mobile">
-              {{getProductData(prodId).title.rendered}}
+              {{ prod.title.rendered }}
             </h5>
 
             <div class="slide__img">
-              <img :src="getProductDataImg(prodId, 'full')" alt="">
+              <img :src="prod.image" :alt="prod.title.rendered">
             </div>
 
             <div class="slide__content">
               <h5 class="title title--small">
-                {{getProductData(prodId).title.rendered}}
+                {{ prod.title.rendered }}
               </h5>
 
               <div
-                v-if="getProductData(prodId).acf.sizes"
+                v-if="prod.acf.sizes"
                 class="slide__sizes">
                 <div
-                  v-for="(size, id) in getProductData(prodId).acf.sizes"
+                  v-for="(size, id) in prod.acf.sizes"
                   :key="id"
                   class="size">
                   <span>
@@ -74,7 +72,7 @@
                   </span>
                 </div>
               </div>
-              <div class="text text--small" v-html="getProductData(prodId).content.rendered"></div>
+              <div class="text text--small" v-html="prod.content.rendered"></div>
             </div>
           </SwiperSlide>
 
@@ -132,27 +130,6 @@ export default {
       productsData: null,
     };
   },
-  async created() {
-    const { public: {API_BASE_URL} } = useRuntimeConfig();
-
-    const allProductsIds = this.products.map(cat => cat.items.map(item => item)).flat();
-
-    const allProducts = await Promise.all(allProductsIds.map(async(id) => {
-      const data = await $fetch(`${API_BASE_URL}/products/${id}?_embed&acf_format=standard`);
-
-      return data;
-    }));
-
-    this.productsData = allProducts;
-  },
-  computed: {
-    getProductData() {
-      return id => this.productsData.filter(prod => id === prod.id)[0];
-    },
-    getProductDataImg() {
-      return (id, size) => this.productsData.filter(prod => id === prod.id)[0]._embedded['wp:featuredmedia'][0]['media_details'].sizes[size]['source_url'];
-    },
-  }
 };
 </script>
 

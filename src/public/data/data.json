@@ -53,18 +53,164 @@
             "categories": [{
                     "headline": "Yogures Bebibles",
                     "items": [
-                        25,
-                        26,
-                        28,
-                        27
+                        {
+                            "title": {
+                                "rendered": "Descremado Frutilla"
+                            },
+                            "content": {
+                                "rendered": "<p>Delicioso yogur descremado con trozos y salsa de frutilla, con doble proteína.</p>\n"
+                              },
+                            "image": "/img/descremado-frutilla.png",
+                            "acf": {
+                                "color": "#BC4324",
+                                "sizes": [
+                                    {
+                                      "size": "950g"
+                                    },
+                                    {
+                                      "size": "190g"
+                                    }
+                                ]
+                            }
+
+                        },
+                        {
+                            "title": {
+                                "rendered": "Descremado Mora"
+                            },
+                            "content": {
+                                "rendered": "<p>Único yogur con trocitos de mora jugosos, doble proteína, ahora con menos azúcar.</p>\n"
+                              },
+                            "image": "/img/descremado-mora.png",
+                            "acf": {
+                                "color": "#752A4A",
+                                "sizes": [
+                                    {
+                                      "size": "950g"
+                                    },
+                                    {
+                                      "size": "190g"
+                                    }
+                                ]
+                            }
+
+                        },
+                        {
+                            "title": {
+                                "rendered": "Descremado Durazno"
+                            },
+                            "content": {
+                                "rendered": "<p>Yogur descremado con doble proteína y jugosos trozos de durazno.</p>\n"
+                              },
+                            "image": "/img/descremado-durazno.png",
+                            "acf": {
+                                "color": "#d96f0d",
+                                "sizes": [
+                                    {
+                                      "size": "950g"
+                                    },
+                                    {
+                                      "size": "190g"
+                                    }
+                                ]
+                            }
+
+                        },
+                        {
+                            "title": {
+                                "rendered": "Descremado Natural"
+                            },
+                            "content": {
+                                "rendered": "<p>Delicioso yogur bebible, con doble proteína, bajo en grasa y sal.</p>\n"
+                              },
+                            "image": "/img/descremado-natural.png",
+                            "acf": {
+                                "color": "#008380",
+                                "sizes": [
+                                    {
+                                      "size": "950g"
+                                    },
+                                    {
+                                      "size": "190g"
+                                    }
+                                ]
+                            }
+
+                        }
                     ]
                 },
                 {
                     "headline": "Yogures Griegos",
                     "items": [
-                        30,
-                        31,
-                        29
+                        {
+                            "title": {
+                                "rendered": "Griego Mora"
+                            },
+                            "content": {
+                                "rendered": "<p>Yogur con tres veces más proteína (vs otros yogures tradicionales), 0% grasa, 0% azúcar añadida, con trozos de frutas, y sobre todo con la textura del verdadero yogur griego.</p>\n"
+                              },
+                            "image": "/img/mora.png",
+                            "acf": {
+                                "color": "#752a4a",
+                                "sizes": [
+                                    {
+                                      "size": "120g"
+                                    },
+                                    {
+                                      "size": "400g"
+                                    }
+                                ]
+                            }
+
+                        },
+                        {
+                            "title": {
+                                "rendered": "Griego Frutilla"
+                            },
+                            "content": {
+                                "rendered": "<p>Yogur con tres veces más proteína (vs otros yogures tradicionales), 0% grasa, 0% azúcar añadida, con trozos de frutas, y sobre todo con la textura del verdadero yogur griego.</p>\n"
+                              },
+                            "image": "/img/frutilla.png",
+                            "acf": {
+                                "color": "#bc4324",
+                                "sizes": [
+                                    {
+                                      "size": "120g"
+                                    },
+                                    {
+                                      "size": "400g"
+                                    }
+                                ]
+                            }
+
+                        },
+                        {
+                            "title": {
+                                "rendered": "Griego Natural"
+                            },
+                            "content": {
+                                "rendered": "<p>Delicioso yogur bebible, con doble proteína, bajo en grasa y sal.</p>\n"
+                              },
+                            "image": "/img/natural.png",
+                            "acf": {
+                                "color": "#008380",
+                                "sizes": [
+                                    {
+                                        "size": "120g"
+                                      },
+                                      {
+                                        "size": "225g"
+                                      },
+                                      {
+                                        "size": "400g"
+                                      },
+                                      {
+                                        "size": "900g"
+                                      }
+                                ]
+                            }
+
+                        }
                     ]
                 }
             ]

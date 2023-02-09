@@ -1,11 +1,6 @@
 <template>
   <div class="hero-home js-hero-home">
-    <picture>
-      <source :srcset="img.sizes['full-page']" media="(min-width: 1400px)">
-      <source :srcset="img.sizes['half-page']" media="(min-width: 768px)">
-      <source :srcset="img.sizes.card">
-      <img class="img" :src="img.url" :alt="img.alt">
-    </picture>
+    <img class="img" :src="img.url" :alt="img.alt">
 
     <div
       class="hero__player">

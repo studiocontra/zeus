@@ -1,12 +1,7 @@
 <template>
   <div class="wrap-content">
     <div class="left">
-      <picture v-if="img">
-        <source :srcset="img.sizes['half-page']" media="(min-width: 1200px)">
-        <source :srcset="img.sizes['card']" media="(min-width: 768px)">
-        <source :srcset="img.sizes.small">
-        <img class="img" :src="img.url" :alt="img.alt">
-      </picture>
+      <img class="img" :src="img.url" :alt="img.alt">
     </div>
     <div class="right">
       <div class="content__content" data-aos="fade-up">

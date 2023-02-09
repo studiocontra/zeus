@@ -20,11 +20,7 @@
           data-aos-anchor-placement="top-center">
 
         <div class="main-img" data-aos="fade-up">
-          <picture>
-            <source :srcset="img.sizes.card" media="(min-width: 576px)">
-            <source :srcset="img.sizes.small">
-            <img :src="img.url" :alt="img.alt">
-          </picture>
+          <img :src="img.url" :alt="img.alt">
         </div>
 
         <img
